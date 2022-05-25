@@ -12,6 +12,7 @@
     "verify:polygon": "hardhat --network polygon etherscan-verify"
   },
   "dependencies": {
+    "@chainlink/contracts": "^0.4.1",
     "@openzeppelin/contracts": "^4.3.2"
   },
   "devDependencies": {
