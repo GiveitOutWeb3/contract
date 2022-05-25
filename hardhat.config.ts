@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
+import { parseEther } from "@ethersproject/units";
 
 import { HardhatUserConfig } from "hardhat/types";
 import "@typechain/hardhat";
@@ -27,11 +28,18 @@ const config: HardhatUserConfig = {
   networks: {
     local: {
       url: "http://127.0.0.1:8545",
+      accounts: [process.env.DEPLOYER_PRIVATE_KEY!],
     },
     hardhat: {
-      // forking: {
-      //   url: process.env.POLYGON_NODE_URL!,
-      // },
+      forking: {
+        url: process.env.POLYGON_NODE_URL!,
+      },
+      accounts: [
+        {
+          privateKey: process.env.DEPLOYER_PRIVATE_KEY!,
+          balance: parseEther("100").toString(),
+        },
+      ],
     },
     polygon: {
       url: process.env.POLYGON_NODE_URL!,
