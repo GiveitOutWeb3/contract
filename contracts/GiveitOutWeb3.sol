@@ -363,7 +363,7 @@ contract GiveitOutWeb3 is VRFConsumerBase, KeeperCompatibleInterface {
         returns (bool upkeepNeeded, bytes memory performData)
     {
         uint256 giveawaysToEndCount;
-        for (uint256 i = 0; i < giveawayNumber.current(); i++) {
+        for (uint256 i = 1; i <= giveawayNumber.current(); i++) {
             bool canExec = block.timestamp >= giveawayMap[i].deadline &&
                 giveawayMap[i].isLive;
             if (canExec) {
@@ -376,7 +376,7 @@ contract GiveitOutWeb3 is VRFConsumerBase, KeeperCompatibleInterface {
 
             uint256[] memory giveawayIds = new uint256[](giveawaysToEndCount);
             uint256 tempCounter;
-            for (uint256 i = 0; i < giveawayNumber.current(); i++) {
+            for (uint256 i = 1; i <= giveawayNumber.current(); i++) {
                 bool canExec = block.timestamp >= giveawayMap[i].deadline &&
                     giveawayMap[i].isLive;
                 if (canExec) {
@@ -394,7 +394,7 @@ contract GiveitOutWeb3 is VRFConsumerBase, KeeperCompatibleInterface {
         (giveawayIds) = abi.decode(performData, (uint256[]));
 
         for (uint256 i = 0; i < giveawayIds.length; i++) {
-            endGiveaway(i);
+            endGiveaway(giveawayIds[i]);
         }
     }
 

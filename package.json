@@ -9,7 +9,9 @@
     "test:logs": "hardhat test --logs",
     "deploy:default": "hardhat deploy",
     "deploy:polygon": "hardhat deploy --network polygon",
-    "verify:polygon": "hardhat --network polygon etherscan-verify"
+    "verify:polygon": "hardhat --network polygon etherscan-verify",
+    "deploy:kovan": "hardhat deploy --network kovan",
+    "verify:kovan": "hardhat --network kovan etherscan-verify"
   },
   "dependencies": {
     "@chainlink/contracts": "^0.4.1",

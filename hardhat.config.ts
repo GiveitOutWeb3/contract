@@ -12,8 +12,8 @@ import "hardhat-abi-exporter";
 import "hardhat-tracer";
 
 const infuraApiKey = process.env.INFURA_API_KEY;
-const privateKey = process.env.PRIVATE_KEY;
-const forkChainId: any  = process.env.FORK_CHAINID;
+const privateKey = process.env.DEPLOYER_PRIVATE_KEY!;
+const forkChainId: any = process.env.FORK_CHAINID;
 
 const chainIds = {
   ganache: 5777,
@@ -46,7 +46,7 @@ const config: HardhatUserConfig = {
   networks: {
     local: {
       url: "http://127.0.0.1:8545",
-      accounts: [process.env.DEPLOYER_PRIVATE_KEY!],
+      accounts: [privateKey],
     },
     hardhat: {
       forking: {
@@ -54,35 +54,41 @@ const config: HardhatUserConfig = {
       },
       accounts: [
         {
-          privateKey: process.env.DEPLOYER_PRIVATE_KEY!,
+          privateKey: privateKey,
           balance: parseEther("100").toString(),
         },
       ],
     },
-
+    kovan: {
+      url: `https://kovan.infura.io/v3/${infuraApiKey}`,
+      accounts: [privateKey],
+    },
     polygon: {
       url: process.env.POLYGON_NODE_URL!,
-      accounts: [process.env.DEPLOYER_PRIVATE_KEY!],
+      accounts: [privateKey],
     },
     bscTestnet: {
-      accounts: [process.env.DEPLOYER_PRIVATE_KEY!],
+      accounts: [privateKey],
       chainId: chainIds["bscTestnet"],
       url: "https://data-seed-prebsc-1-s1.binance.org:8545",
     },
     bscMainnet: {
-      accounts: [process.env.DEPLOYER_PRIVATE_KEY!],
+      accounts: [privateKey],
       chainId: chainIds["bscMainnet"],
       url: "https://bsc-dataseed.binance.org/",
     },
     MaticTestnet: {
-      accounts: [process.env.DEPLOYER_PRIVATE_KEY!],
+      accounts: [privateKey],
       // chainId: chainIds["MaticTestnet"],
       chainId: 80001,
       allowUnlimitedContractSize: true,
-      url: "https://speedy-nodes-nyc.moralis.io/"+ infuraApiKey +"/polygon/mumbai",
+      url:
+        "https://speedy-nodes-nyc.moralis.io/" +
+        infuraApiKey +
+        "/polygon/mumbai",
     },
     MaticMainnet: {
-      accounts: [process.env.DEPLOYER_PRIVATE_KEY!],
+      accounts: [privateKey],
       chainId: chainIds["MaticMainnet"],
       allowUnlimitedContractSize: true,
       url: "https://rpc-mainnet.maticvigil.com/",
