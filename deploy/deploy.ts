@@ -8,15 +8,17 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
   const { deployer } = await getNamedAccounts();
 
-  await deploy("LuckyYou", {
+  await deploy("GiveitOutWeb3", {
     from: deployer,
     log: true,
   });
 
-  await deploy("NFTs", {
+  await deploy("GiveOutNFT", {
     from: deployer,
     log: true,
   });
+
+  
 };
 export default func;
-func.tags = ["LuckyYou", "NFTs"];
+func.tags = ["GiveitOutWeb3", "GiveOutNFT"];

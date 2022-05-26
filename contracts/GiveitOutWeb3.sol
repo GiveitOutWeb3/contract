@@ -50,7 +50,7 @@ interface IOps {
 }
 
 
-contract LuckyYou is VRFConsumerBase, OpsReady
+contract GiveitOutWeb3 is VRFConsumerBase, OpsReady
 {
 
     address public owner;
@@ -64,17 +64,14 @@ contract LuckyYou is VRFConsumerBase, OpsReady
     address opsAddress = 0x527a819db1eb0e34426297b03bae11F2f8B3A19E; 
     uint public currGiveawayId=0;
     bool public isLocked=false;
-
-    
-    
+}
     
 
-
-    constructor() VRFConsumerBase(vrfCoordinator, link) OpsReady(opsAddress) payable {
+constructor() VRFConsumerBase(vrfCoordinator, link) OpsReady(opsAddress) payable {
         keyHash = 0xf86195cf7690c55907b2b611ebb7343a6f649bff128701cc542f0569e2c549da;
         fee = 0.1 * 10 ** 15;
         owner = msg.sender;
-        }
+}
 
     event GiveawayCreated(
         address creator,

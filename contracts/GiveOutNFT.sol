@@ -6,27 +6,28 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 
- contract NFTs is ERC721URIStorage { 
+ contract GiveOutNFT is ERC721URIStorage { 
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
 
-    struct LuckyYouNFTSource {
+    struct GiveitOutNFTSource {
         address creator;
 
         string metadataUri;
     }
-    mapping (uint256 => LuckyYouNFTSource) public idToLuckyYouNFTSource;
+
+    mapping (uint256 => GiveitOutNFTSource) public idToGiveitOutNFTSource;
 
     mapping (uint256 => bool) public nftMinted;
 
-    constructor () ERC721("LuckyYou","LkYU"){}
+    constructor () ERC721("GiveitOut","LkYU"){}
 
     function createToken(string memory metadataUri, uint256 giveawayId) public returns (uint) {
         _tokenIds.increment();
         uint256 newItemId = _tokenIds.current();
         _safeMint(msg.sender, newItemId);
         _setTokenURI(newItemId, metadataUri);
-        idToLuckyYouNFTSource[newItemId] = LuckyYouNFTSource( msg.sender, metadataUri);
+        idToGiveitOutNFTSource[newItemId] = GiveitOutNFTSource( msg.sender, metadataUri);
         nftMinted[giveawayId] = true;
         return newItemId;
     }
@@ -38,8 +39,8 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
             address creator,
             string memory metadataUri)
         {
-          LuckyYouNFTSource memory luckyYouNFTSource = idToLuckyYouNFTSource[_tokenId];
-          return (luckyYouNFTSource.creator, luckyYouNFTSource.metadataUri);
+          GiveitOutNFTSource memory GiveitOutNFTSource = idToGiveitOutNFTSource[_tokenId];
+          return (GiveitOutNFTSource.creator, GiveitOutNFTSource.metadataUri);
         }
 
 
