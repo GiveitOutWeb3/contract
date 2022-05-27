@@ -33,7 +33,7 @@ contract GiveitOutWeb3 is VRFConsumerBase, KeeperCompatibleInterface {
         keyHash = _keyHash;
         keeperRegistryAddress = _keeperRegistryAddress;
 
-        fee = 0.1 * 10**15;
+        fee = 0.1 ether;
         owner = msg.sender;
     }
 
