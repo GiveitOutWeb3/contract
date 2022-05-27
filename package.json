@@ -11,11 +11,14 @@
     "deploy:polygon": "hardhat deploy --network polygon",
     "verify:polygon": "hardhat --network polygon etherscan-verify",
     "deploy:kovan": "hardhat deploy --network kovan",
-    "verify:kovan": "hardhat --network kovan etherscan-verify"
+    "verify:kovan": "hardhat --network kovan etherscan-verify",
+    "deploy:bscTestnet": "hardhat deploy --network bscTestnet",
+    "verify:bscTestnet": "hardhat --network bscTestnet etherscan-verify"
   },
   "dependencies": {
     "@chainlink/contracts": "^0.4.1",
-    "@openzeppelin/contracts": "^4.3.2"
+    "@openzeppelin/contracts": "^4.3.2",
+    "ethers": "^5.6.8"
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.2",

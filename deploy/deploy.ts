@@ -17,6 +17,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
       addresses.vrfCoordinatorAddress,
       addresses.linkTokenAddress,
       addresses.VRFKeyHash,
+      addresses.VRFFee,
       addresses.keeperRegistryAddress,
     ],
     from: deployer,
